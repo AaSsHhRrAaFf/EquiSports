@@ -1,9 +1,16 @@
-import React from 'react'
-import Navbar from './components/shared/Navbar'
+import React from "react";
+import Navbar from "./components/shared/Navbar";
+import Footer from "./components/shared/Footer";
 
- const App = () => {
+const App = () => {
   return (
-    <Navbar></Navbar>
-  )
-}
+    <>
+      <Navbar />
+      {/* <main className="flex-grow">
+        <Outlet />
+      </main> */}
+      <Footer />
+    </>
+  );
+};
 export default App;
