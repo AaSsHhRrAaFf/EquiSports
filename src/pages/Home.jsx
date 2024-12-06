@@ -3,6 +3,8 @@ import image01 from "../assets/8460293_3864554.jpg";
 import image02 from "../assets/Collection_of_GM_cricket_Bats_-desk_1800x.webp";
 import image03 from "../assets/Collection_of_NewBalance_cricket_shoes-desk_3_1800x.webp";
 import FeaturedProducts from "../components/FeaturedProducts";
+import SpecialOffers from "../components/SpecialOffers";
+import FeaturedAthletes from "../components/FeaturedAthletes";
 
 function Home() {
   return (
@@ -33,6 +35,11 @@ function Home() {
         </div>
       </section>
       <FeaturedProducts></FeaturedProducts>
+
+      <SpecialOffers />
+
+      
+      <FeaturedAthletes />
     </>
   );
 }
