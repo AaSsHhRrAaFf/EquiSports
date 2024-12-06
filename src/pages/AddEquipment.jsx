@@ -30,7 +30,9 @@ const AddEquipment = () => {
     };
 
     try {
-      const response = await axios.post('/api/equipment/add', equipmentData);
+      const response = await axios.post('http://localhost:5000/api/equipment/add', equipmentData);
+      
+      
       if (response.data.success) {
         toast.success('Equipment added successfully!');
         navigate('/my-equipment');
@@ -141,7 +143,7 @@ const AddEquipment = () => {
               className="input input-bordered w-full"
               placeholder="e.g., 2-3 business days"
             />
-          </div> Customization */}
+          </div> 
           <div>
             <label className="label">Customization Options</label>
             <input 

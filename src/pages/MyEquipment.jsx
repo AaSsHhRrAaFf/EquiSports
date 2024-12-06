@@ -1,21 +1,23 @@
 
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import LoadingSpinner from '../components/shared/LoadingSpinner';
 import { toast } from 'react-hot-toast';
+import { useAuth } from '../contexts/AuthContext'; 
+import { Fade } from 'react-awesome-reveal'; 
 
 const MyEquipment = () => {
   const [equipment, setEquipment] = useState([]);
   const [loading, setLoading] = useState(true);
   const [deleteId, setDeleteId] = useState(null);
+  const { user } = useAuth(); 
 
- 
   useEffect(() => {
     const fetchEquipment = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/equipment/user/${userEmail}`);
+        
+        const response = await axios.get(`http://localhost:5000/api/equipment/user/${user.email}`);
         setEquipment(response.data);
       } catch (error) {
         console.error('Error fetching equipment:', error);
@@ -25,8 +27,10 @@ const MyEquipment = () => {
       }
     };
 
-    fetchEquipment();
-  }, []);
+    if (user?.email) { 
+      fetchEquipment();
+    }
+  }, [user?.email]); 
 
   const handleDelete = async (id) => {
     try {

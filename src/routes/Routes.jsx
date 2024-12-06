@@ -11,6 +11,7 @@ import AddEquipment from "../pages/AddEquipment";
 import PrivateRoute from "./PrivateRoute";
 import AllSportsEquipment from "../pages/AllSportsEquipment";
 import MyEquipment from "../pages/MyEquipment";
+import UpdateEquipment from "../pages/UpdateEquipment";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,14 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/update-equipment/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateEquipment />
+          </PrivateRoute>
+        )
+      }
     ],
   },
 ]);

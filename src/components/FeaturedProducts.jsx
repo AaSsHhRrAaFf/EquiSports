@@ -14,7 +14,7 @@ const FeaturedProducts = () => {
       try {
         setLoading(true);
         const response = await axios('http://localhost:5000/api/equipment/featured');
-        console.log('Fetched products:', response);
+        
         setProducts(response.data);
       } catch (err) {
         setError('Failed to fetch products');
