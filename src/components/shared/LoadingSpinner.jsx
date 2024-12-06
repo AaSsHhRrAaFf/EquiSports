@@ -1,4 +1,4 @@
-// Path: equisports-client\src\components\shared\LoadingSpinner.jsx
+
 import React from 'react';
 
 function LoadingSpinner() {

@@ -1,18 +1,16 @@
-// src/routes/Routes.jsx
 
-/* import App from '../App';
-import ErrorPage from '../pages/ErrorPage';
-import Home from '../pages/Home';
-import Login from '../pages/Login';
-import Register from '../pages/Register'; */
 
-import { createBrowserRouter } from 'react-router-dom';
-import App  from '../App';
-import ErrorPage from '../pages/ErrorPage';
-import Home from '../pages/Home';
-import  Login  from '../pages/Login';
-import  Register  from '../pages/Register';
+import { createBrowserRouter } from "react-router-dom";
+import App from "../App";
+import ErrorPage from "../pages/ErrorPage";
+import Home from "../pages/Home";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
 
+import AddEquipment from "../pages/AddEquipment";
+import PrivateRoute from "./PrivateRoute";
+import AllSportsEquipment from "../pages/AllSportsEquipment";
+import MyEquipment from "../pages/MyEquipment";
 
 const router = createBrowserRouter([
   {
@@ -22,18 +20,38 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />
+        element: <Home />,
       },
       {
         path: "/login",
-        element: <Login />
+        element: <Login />,
       },
       {
         path: "/register",
-        element: <Register />
-      }
-    ]
-  }
+        element: <Register />,
+      },
+      {
+        path: "/add-equipment",
+        element: (
+          <PrivateRoute>
+            <AddEquipment />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/all-equipment",
+        element: <AllSportsEquipment />,
+      },
+      {
+        path: "/my-equipment",
+        element: (
+          <PrivateRoute>
+            <MyEquipment />
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
 ]);
 
 export default router;

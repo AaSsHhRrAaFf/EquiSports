@@ -1,12 +1,21 @@
-import React from "react";
-import logo from '../../assets/logo.png'; 
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import logo from '../../assets/logo.png';
 
 function Navbar() {
-  const isLoggedIn = false; // Replace with actual authentication logic
+  const { user, logout } = useContext(AuthContext);
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 shadow-md">
       <div className="navbar-start">
         <div className="dropdown">
           <button tabIndex={0} className="btn btn-ghost lg:hidden" aria-label="Toggle navigation menu">
@@ -27,37 +36,64 @@ function Navbar() {
           </button>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/all-equipment">All Sports Equipment</Link>
-            </li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/all-equipment">All Sports Equipment</Link></li>
+            {user && (
+              <>
+                <li><Link to="/add-equipment">Add Equipment</Link></li>
+                <li><Link to="/my-equipment">My Equipment List</Link></li>
+              </>
+            )}
           </ul>
         </div>
-        <img src={logo} alt="Logo" className="w-16 rounded-2xl" />
-        <Link to="/" className="btn btn-ghost text-3xl font-bold">Sports Hub</Link>
+        <Link to="/" className="flex items-center gap-2">
+          <img src={logo} alt="Logo" className="w-12 h-12 rounded-full" />
+          <span className="text-xl font-bold">Sports Hub</span>
+        </Link>
       </div>
+
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/all-equipment">All Sports Equipment</Link>
-          </li>
+        <ul className="menu menu-horizontal px-1 gap-2">
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/all-equipment">All Sports Equipment</Link></li>
+          {user && (
+            <>
+              <li><Link to="/add-equipment">Add Equipment</Link></li>
+              <li><Link to="/my-equipment">My Equipment List</Link></li>
+            </>
+          )}
         </ul>
       </div>
-      <div className="navbar-end gap-4">
-        {isLoggedIn ? (
-          <button className="btn" onClick={() => {/* Add logout logic */}}>Log Out</button>
+
+      <div className="navbar-end gap-2">
+        {user ? (
+          <div className="flex items-center gap-4">
+            <div className="dropdown dropdown-end">
+              <div 
+                tabIndex={0} 
+                className="btn btn-ghost btn-circle avatar tooltip tooltip-left" 
+                data-tip={user.displayName}
+              >
+                <div className="w-10 rounded-full">
+                  <img 
+                    src={user.photoURL || "https://i.pravatar.cc/300"} 
+                    alt={user.displayName}
+                  />
+                </div>
+              </div>
+              <ul className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                <li className="text-center font-semibold p-2">{user.displayName}</li>
+                <li><button onClick={handleLogout}>Logout</button></li>
+              </ul>
+            </div>
+          </div>
         ) : (
-          <>
-            <Link to="/login" className="btn">Login</Link>
-            <Link to="/register" className="btn">Register</Link>
-          </>
+          <div className="flex gap-2">
+            <Link to="/login" className="btn btn-ghost">Login</Link>
+            <Link to="/register" className="btn btn-primary">Register</Link>
+          </div>
         )}
       </div>
     </div>

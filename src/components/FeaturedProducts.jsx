@@ -1,4 +1,4 @@
-// src/components/FeaturedProducts.jsx
+
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
