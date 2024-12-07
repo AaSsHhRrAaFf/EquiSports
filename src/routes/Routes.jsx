@@ -13,6 +13,7 @@ import UpdateEquipment from "../pages/UpdateEquipment";
 import EquipmentDetails from "../pages/EquipmentDetails";
 import NotFoundPage from "../pages/NotFoundPage";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
