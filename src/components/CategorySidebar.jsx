@@ -1,9 +1,11 @@
-
 import React, { useEffect, useState } from 'react';
+import { useContext } from 'react';
+import { ThemeContext } from '../contexts/ThemeContext';
 
 const CategorySidebar = ({ onCategorySelect }) => {
   const [categories, setCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState('All Categories');
+  const { theme } = useContext(ThemeContext); 
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -28,7 +30,7 @@ const CategorySidebar = ({ onCategorySelect }) => {
   };
 
   return (
-    <div className="w-64 p-4 bg-gray-100 border-r">
+    <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'}`}>
       <h2 className="text-xl font-bold mb-4">Categories</h2>
       <ul>
         <li>
@@ -37,7 +39,7 @@ const CategorySidebar = ({ onCategorySelect }) => {
             className={`block w-full text-left px-4 py-2 rounded-md mb-2 ${
               activeCategory === 'All Categories'
                 ? 'bg-blue-500 text-white'
-                : 'bg-white text-gray-800'
+                : theme === 'dark' ? 'bg-gray-700 text-white' : 'bg-white text-gray-800'
             }`}
           >
             All Categories
@@ -50,7 +52,7 @@ const CategorySidebar = ({ onCategorySelect }) => {
               className={`block w-full text-left px-4 py-2 rounded-md mb-2 ${
                 activeCategory === category
                   ? 'bg-blue-500 text-white'
-                  : 'bg-white text-gray-800'
+                  : theme === 'dark' ? 'bg-gray-700 text-white' : 'bg-white text-gray-800'
               }`}
             >
               {category}

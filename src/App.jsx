@@ -5,27 +5,30 @@ import { Outlet } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 import { AuthProvider } from "./contexts/AuthContext";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 const App = () => {
   return (
     <>
-      <AuthProvider>
-        <Navbar />
-        <main className="flex-grow">
-          <Outlet />
-        </main>
-        <Footer />
-        <Toaster
-          position="top-right"
-          toastOptions={{
-            duration: 3000,
-            style: {
-              background: "#363636",
-              color: "#fff",
-            },
-          }}
-        />
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <Navbar />
+          <main className="flex-grow">
+            <Outlet />
+          </main>
+          <Footer />
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              duration: 3000,
+              style: {
+                background: "#363636",
+                color: "#fff",
+              },
+            }}
+          />
+        </AuthProvider>
+      </ThemeProvider>
     </>
   );
 };

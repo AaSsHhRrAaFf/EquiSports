@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import logo from '../../assets/logo.png';
+import logo from "../../assets/logo.png";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { Sun, Moon } from "lucide-react";
 
 function Navbar() {
   const { user, logout } = useContext(AuthContext);
@@ -14,11 +17,17 @@ function Navbar() {
     }
   };
 
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   return (
     <div className="navbar bg-base-100 shadow-md">
       <div className="navbar-start">
         <div className="dropdown">
-          <button tabIndex={0} className="btn btn-ghost lg:hidden" aria-label="Toggle navigation menu">
+          <button
+            tabIndex={0}
+            className="btn btn-ghost lg:hidden"
+            aria-label="Toggle navigation menu"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -38,12 +47,20 @@ function Navbar() {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/all-equipment">All Sports Equipment</Link></li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/all-equipment">All Sports Equipment</Link>
+            </li>
             {user && (
               <>
-                <li><Link to="/add-equipment">Add Equipment</Link></li>
-                <li><Link to="/my-equipment">My Equipment List</Link></li>
+                <li>
+                  <Link to="/add-equipment">Add Equipment</Link>
+                </li>
+                <li>
+                  <Link to="/my-equipment">My Equipment List</Link>
+                </li>
               </>
             )}
           </ul>
@@ -56,43 +73,71 @@ function Navbar() {
 
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-2">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/all-equipment">All Sports Equipment</Link></li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/all-equipment">All Sports Equipment</Link>
+          </li>
           {user && (
             <>
-              <li><Link to="/add-equipment">Add Equipment</Link></li>
-              <li><Link to="/my-equipment">My Equipment List</Link></li>
+              <li>
+                <Link to="/add-equipment">Add Equipment</Link>
+              </li>
+              <li>
+                <Link to="/my-equipment">My Equipment List</Link>
+              </li>
             </>
           )}
         </ul>
       </div>
 
       <div className="navbar-end gap-2">
+        {/* Theme Toggle Button */}
+        <button
+          onClick={toggleTheme}
+          className="btn btn-ghost btn-circle"
+          aria-label="Toggle theme"
+        >
+          {theme === "light" ? (
+            <Moon className="h-5 w-5" />
+          ) : (
+            <Sun className="h-5 w-5" />
+          )}
+        </button>
         {user ? (
           <div className="flex items-center gap-4">
             <div className="dropdown dropdown-end">
-              <div 
-                tabIndex={0} 
-                className="btn btn-ghost btn-circle avatar tooltip tooltip-left" 
+              <div
+                tabIndex={0}
+                className="btn btn-ghost btn-circle avatar tooltip tooltip-left"
                 data-tip={user.displayName}
               >
                 <div className="w-10 rounded-full">
-                  <img 
-                    src={user.photoURL || "https://i.pravatar.cc/300"} 
+                  <img
+                    src={user.photoURL || "https://i.pravatar.cc/300"}
                     alt={user.displayName}
                   />
                 </div>
               </div>
               <ul className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                <li className="text-center font-semibold p-2">{user.displayName}</li>
-                <li><button onClick={handleLogout}>Logout</button></li>
+                <li className="text-center font-semibold p-2">
+                  {user.displayName}
+                </li>
+                <li>
+                  <button onClick={handleLogout}>Logout</button>
+                </li>
               </ul>
             </div>
           </div>
         ) : (
           <div className="flex gap-2">
-            <Link to="/login" className="btn btn-ghost">Login</Link>
-            <Link to="/register" className="btn btn-primary">Register</Link>
+            <Link to="/login" className="btn btn-ghost">
+              Login
+            </Link>
+            <Link to="/register" className="btn btn-primary">
+              Register
+            </Link>
           </div>
         )}
       </div>
