@@ -1,41 +1,36 @@
-import { Ghost } from 'lucide-react'
-import React from 'react'
-import { Link } from 'react-router-dom'
 
-function NotFoundPage() {
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Lottie from 'lottie-react';
+import notFoundAnimation from '../assets/Animation - 1733612544288.json'; 
+import { Fade } from 'react-awesome-reveal';
+
+const NotFoundPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-100 flex items-center justify-center p-4">
-    <div className="text-center max-w-md">
-      <div className="flex justify-center mb-6">
-        <Ghost 
-          size={120} 
-          className="text-purple-500 animate-bounce" 
-          strokeWidth={1.5}
-        />
-      </div>
-      <h1 className="text-6xl font-bold text-gray-800 mb-4">
-        404
-      </h1>
-      <p className="text-xl text-gray-600 mb-6">
-        Oops! The page you're looking for seems to have wandered off into the digital wilderness.
-      </p>
-      <div className="space-x-4">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4">
+      <Fade cascade damping={0.2}>
+        <div className="w-full max-w-md">
+          <Lottie 
+            animationData={notFoundAnimation}
+            loop={true}
+            style={{ width: '100%', maxWidth: 400, margin: '0 auto' }}
+          />
+        </div>
+        <h1 className="text-4xl font-bold text-center mt-8">Page Not Found</h1>
+        <p className="text-gray-600 text-center mt-4">
+          The page you're looking for doesn't exist or has been moved.
+        </p>
         <Link 
-          to="/" 
-          className="px-6 py-3 bg-purple-500 text-white rounded-full hover:bg-purple-600 transition-colors duration-300 inline-block shadow-lg"
+          to="/"
+          className="btn btn-primary mt-6"
+          data-tooltip-id="home-tooltip"
+          data-tooltip-content="Return to homepage"
         >
-          Return Home
+          Go Home
         </Link>
-        <button 
-          onClick={() => window.location.reload()}
-          className="px-6 py-3 bg-gray-200 text-gray-800 rounded-full hover:bg-gray-300 transition-colors duration-300 inline-block"
-        >
-          Reload Page
-        </button>
-      </div>
+      </Fade>
     </div>
-  </div>
-  )
-}
+  );
+};
 
 export default NotFoundPage;

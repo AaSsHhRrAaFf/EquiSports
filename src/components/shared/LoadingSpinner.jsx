@@ -1,10 +1,15 @@
 
 import React from 'react';
-
+import Lottie from 'lottie-react';
+import loadingAnimation from '../../assets/loading.json';
 function LoadingSpinner() {
   return (
     <div className="flex items-center justify-center min-h-[200px]">
-      <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-primary"></div>
+      <Lottie 
+        animationData={loadingAnimation}
+        loop={true}
+        style={{ width: 150, height: 150 }}
+      />
     </div>
   );
 }
