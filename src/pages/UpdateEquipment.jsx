@@ -1,4 +1,4 @@
-// src/pages/UpdateEquipment.jsx
+
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
@@ -13,13 +13,15 @@ const UpdateEquipment = () => {
   const [loading, setLoading] = useState(true);
   const [equipment, setEquipment] = useState(null);
 
-  // Fetch current equipment data
+
   useEffect(() => {
     const fetchEquipment = async () => {
       try {
         const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/equipment/${id}`);
+        console.log('Fetched Equipment:', response.data); 
         setEquipment(response.data);
       } catch (error) {
+        console.error('Error fetching equipment details:', error);
         toast.error('Failed to fetch equipment details');
       } finally {
         setLoading(false);
@@ -43,21 +45,24 @@ const UpdateEquipment = () => {
       customization: form.customization.value,
       processingTime: form.processingTime.value,
       stockStatus: parseInt(form.stockStatus.value),
-      userEmail: user.email, // Read-only
-      userName: user.displayName // Read-only
+      userEmail: user.email, 
+      userName: user.displayName 
     };
-
+    console.log('Updated Data:', updatedData); 
     try {
-      await axios.put(`${import.meta.env.VITE_API_URL}/api/equipment/${id}`, updatedData);
+      const response = await axios.put(`${import.meta.env.VITE_API_URL}/api/equipment/${id}`, updatedData);
+    
       toast.success('Equipment updated successfully!');
       navigate('/my-equipment');
     } catch (error) {
+      console.error('Error updating equipment:', error); 
       toast.error('Failed to update equipment');
     }
   };
 
   if (loading) return <LoadingSpinner />;
   if (!equipment) return <div>Equipment not found</div>;
+console.log(equipment);
 
   return (
     <div className="max-w-4xl mx-auto p-6">
@@ -200,6 +205,7 @@ const UpdateEquipment = () => {
         <button
           type="submit"
           className="btn btn-primary w-full mt-6"
+
         >
           Update Equipment
         </button>

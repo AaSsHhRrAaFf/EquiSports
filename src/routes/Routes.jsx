@@ -1,8 +1,6 @@
-
-
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import ErrorPage from "../pages/ErrorPage";
+import ErrorPage from "../pages/NotFoundPage";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
@@ -13,6 +11,7 @@ import AllSportsEquipment from "../pages/AllSportsEquipment";
 import MyEquipment from "../pages/MyEquipment";
 import UpdateEquipment from "../pages/UpdateEquipment";
 import EquipmentDetails from "../pages/EquipmentDetails";
+import NotFoundPage from "../pages/NotFoundPage";
 
 const router = createBrowserRouter([
   {
@@ -58,16 +57,20 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <UpdateEquipment />
           </PrivateRoute>
-        )
+        ),
       },
       {
-        path: "/equipment/:id", 
+        path: "/equipment/:id",
         element: (
           <PrivateRoute>
             <EquipmentDetails />
           </PrivateRoute>
-        )
-      }
+        ),
+      },
+      {
+        path: "*",
+        element: <NotFoundPage />,
+      },
     ],
   },
 ]);

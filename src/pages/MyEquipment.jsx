@@ -18,7 +18,7 @@ const MyEquipment = () => {
       try {
         
         const response = await axios.get(`http://localhost:5000/api/equipment/user/${user.email}`);
-        setEquipment(response.data);
+       
       } catch (error) {
         console.error('Error fetching equipment:', error);
         toast.error('Failed to load equipment');
@@ -87,6 +87,7 @@ const MyEquipment = () => {
                     <Link 
                       to={`/update-equipment/${item._id}`}
                       className="btn btn-primary btn-sm"
+                     
                     >
                       Update
                     </Link>
