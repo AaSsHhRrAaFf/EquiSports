@@ -18,7 +18,7 @@ const MyEquipment = () => {
       try {
         
         const response = await axios.get(`http://localhost:5000/api/equipment/user/${user.email}`);
-       
+        setEquipment(response.data);
       } catch (error) {
         console.error('Error fetching equipment:', error);
         toast.error('Failed to load equipment');

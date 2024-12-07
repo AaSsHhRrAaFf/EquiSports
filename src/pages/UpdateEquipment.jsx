@@ -18,8 +18,9 @@ const UpdateEquipment = () => {
     const fetchEquipment = async () => {
       try {
         const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/equipment/${id}`);
-        console.log('Fetched Equipment:', response.data); 
+       
         setEquipment(response.data);
+        console.log('Fetched Equipment:', response); 
       } catch (error) {
         console.error('Error fetching equipment details:', error);
         toast.error('Failed to fetch equipment details');
@@ -62,7 +63,7 @@ const UpdateEquipment = () => {
 
   if (loading) return <LoadingSpinner />;
   if (!equipment) return <div>Equipment not found</div>;
-console.log(equipment);
+
 
   return (
     <div className="max-w-4xl mx-auto p-6">
