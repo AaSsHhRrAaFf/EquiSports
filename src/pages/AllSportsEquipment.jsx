@@ -97,6 +97,7 @@ const AllSportsEquipment = () => {
                   <Link 
                     to={`/equipment/${item._id}`}
                     className="btn btn-sm btn-info"
+                    
                   >
                     View Details
                   </Link>
