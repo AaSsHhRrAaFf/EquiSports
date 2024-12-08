@@ -1,6 +1,9 @@
 
 import { Fade } from 'react-awesome-reveal';
 import { Tooltip } from 'react-tooltip';
+import seasonDeal from '../assets/season-deal.webp'
+import bundleDeal from '../assets/Bundle-Deal.webp'  
+import studentDeal from '../assets/student-deal.webp' 
 
 const SpecialOffers = () => {
   const offers = [
@@ -9,21 +12,21 @@ const SpecialOffers = () => {
       title: "Seasonal Sale",
       description: "Up to 40% off on all cricket equipment",
       validUntil: "December 31, 2024",
-      image: "/images/seasonal-sale.jpg"
+      image: seasonDeal
     },
     {
       id: 2,
       title: "Bundle Deal",
       description: "Buy any bat and get 20% off on batting pads",
       validUntil: "Limited Time Offer",
-      image: "/images/bundle-deal.jpg"
+      image: bundleDeal
     },
     {
       id: 3,
       title: "Student Discount",
       description: "10% off with valid student ID",
       validUntil: "Ongoing",
-      image: "/images/student-discount.jpg"
+      image: studentDeal
     }
   ];
 

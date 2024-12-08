@@ -1,5 +1,45 @@
-# Vue 3 + Vite
+# 🏆 EquiSports - Premium Sports Equipment Store
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+![EquiSports Banner](public/logo.png)
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## 🎯 Live Site
+[Visit EquiSports](your-live-site-url)
+
+## ✨ Key Features
+
+- 🔐 **Secure Authentication**: Multiple login options including email/password and Google authentication
+- 🛍️ **Equipment Management**: Users can add, update, and delete their sports equipment listings
+- 🌓 **Dark/Light Theme**: Toggle between dark and light modes for comfortable viewing
+- 📱 **Fully Responsive**: Seamless experience across mobile, tablet, and desktop devices
+- ⚡ **Real-time Updates**: Instant feedback with toast notifications for all user actions
+- 🎨 **Modern UI**: Sleek design with animations using React Awesome Reveal and Lottie React
+- 💻 **User Dashboard**: Personal equipment management interface for registered users
+- 🔍 **Advanced Sorting**: Price-based sorting functionality for equipment listings
+
+## 🛠️ Technologies Used
+
+### Frontend
+- React.js with Vite
+- Tailwind CSS & DaisyUI
+- Firebase Authentication
+- React Router DOM
+- Axios
+- React Hot Toast
+- React Awesome Reveal
+- React Tooltip
+- Lottie React
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- CORS
+- dotenv
+
+## 🚀 Getting Started
+
+1. Clone the repositories:
+```bash
+git clone https://github.com/yourusername/equisports-client.git
+git clone https://github.com/yourusername/equisports-server.git

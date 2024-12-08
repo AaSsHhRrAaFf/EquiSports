@@ -29,6 +29,7 @@ const FeaturedProducts = () => {
 
   if (loading) return <LoadingSpinner />;
   if (error) return <div className="text-center text-red-500">{error}</div>;
+console.log(products);
 
   return (
     <section className="py-12">
@@ -42,7 +43,7 @@ const FeaturedProducts = () => {
               <img
                 src={product.image}
                 alt={product.itemName}
-                className="w-full h-48 object-cover"
+                className="w-full h-60 object-cover"
               />
               <div className="p-4">
                 <h3 className="text-xl font-bold mb-2">{product.itemName}</h3>

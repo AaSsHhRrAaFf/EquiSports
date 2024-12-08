@@ -6,10 +6,10 @@ const FeaturedAthletes = () => {
   const athletes = [
     {
       id: 1,
-      name: "Sarah Johnson",
+      name: "Ben Stokes",
       sport: "Cricket",
       testimonial: "The quality of equipment from Sports Hub has significantly improved my game performance.",
-      image: "/images/athlete1.jpg",
+      image: "https://cdn.shopify.com/s/files/1/0506/5044/8050/files/Dept-Gunn-And-Moore_Cricket_Bats_2025.jpg?v=1732015750",
       rating: 5
     },
     {
@@ -17,15 +17,15 @@ const FeaturedAthletes = () => {
       name: "Michael Chen",
       sport: "Basketball",
       testimonial: "Best sports store for professional gear. Their customer service is exceptional.",
-      image: "/images/athlete2.jpg",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXgtMpe-nDojeRxZjRiVZnNrLFv2VmJU6UVw&s",
       rating: 5
     },
     {
       id: 3,
-      name: "David Smith",
+      name: "Neymar",
       sport: "Football",
       testimonial: "I've been shopping here for years. The equipment quality is consistently excellent.",
-      image: "/images/athlete3.jpg",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk43srWx-LpmgXb-vQuF13_0QP_GeB48_C6A&s",
       rating: 4
     }
   ];
