@@ -20,7 +20,7 @@ const UpdateEquipment = () => {
         const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/equipment/${id}`);
        
         setEquipment(response.data);
-        console.log('Fetched Equipment:', response); 
+         
       } catch (error) {
         console.error('Error fetching equipment details:', error);
         toast.error('Failed to fetch equipment details');
@@ -49,7 +49,7 @@ const UpdateEquipment = () => {
       userEmail: user.email, 
       userName: user.displayName 
     };
-    console.log('Updated Data:', updatedData); 
+     
     try {
       const response = await axios.put(`${import.meta.env.VITE_API_URL}/api/equipment/${id}`, updatedData);
     

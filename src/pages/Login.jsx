@@ -6,17 +6,20 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const auth = getAuth();
+  const navigate = useNavigate();
 
   const handleEmailLogin = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toast.success("Logged in successfully!");
+      navigate("/");
     } catch (error) {
       toast.error("Incorrect email or password.");
     }
@@ -27,6 +30,7 @@ const Login = () => {
     try {
       await signInWithPopup(auth, provider);
       toast.success("Logged in with Google!");
+      navigate("/");
     } catch (error) {
       toast.error("Failed to login with Google.");
     }
@@ -95,7 +99,7 @@ const Login = () => {
             src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
             alt="Google"
           />
-          Sign up with Google
+          Login with Google
         </button>
       </div>
     </div>
@@ -103,4 +107,3 @@ const Login = () => {
 };
 
 export default Login;
-

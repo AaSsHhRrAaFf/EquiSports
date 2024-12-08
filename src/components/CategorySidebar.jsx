@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { ThemeContext } from '../contexts/ThemeContext';
 
+
 const CategorySidebar = ({ onCategorySelect }) => {
   const [categories, setCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState('All Categories');
@@ -10,7 +11,9 @@ const CategorySidebar = ({ onCategorySelect }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/equipment');
+       
+         const response = await fetch(`${import.meta.env.VITE_API_URL}/api/equipment`);
+        
         const data = await response.json();
         const uniqueCategories = [
           ...new Set(data.map(item => item.categoryName)),

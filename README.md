@@ -3,7 +3,7 @@
 ![EquiSports Banner](public/logo.png)
 
 ## 🎯 Live Site
-[Visit EquiSports](your-live-site-url)
+[Visit Sports Hub](https://sports-equipment-online-cb91b.web.app)
 
 ## ✨ Key Features
 
@@ -37,9 +37,3 @@
 - CORS
 - dotenv
 
-## 🚀 Getting Started
-
-1. Clone the repositories:
-```bash
-git clone https://github.com/yourusername/equisports-client.git
-git clone https://github.com/yourusername/equisports-server.git

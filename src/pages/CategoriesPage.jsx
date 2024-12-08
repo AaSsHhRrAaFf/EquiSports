@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import CategorySidebar from "../components/CategorySidebar";
 import CategoryCard from "../components/CategoryCard";
 
+
 const CategoriesPage = () => {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
@@ -10,7 +11,9 @@ const CategoriesPage = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/equipment");
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/equipment`);
+     
+        
         const data = await response.json();
         setItems(data);
         setFilteredItems(data);

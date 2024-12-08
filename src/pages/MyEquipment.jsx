@@ -16,8 +16,9 @@ const MyEquipment = () => {
   useEffect(() => {
     const fetchEquipment = async () => {
       try {
+       
+         const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/equipment/user/${user.email}`);
         
-        const response = await axios.get(`http://localhost:5000/api/equipment/user/${user.email}`);
         setEquipment(response.data);
       } catch (error) {
         console.error('Error fetching equipment:', error);
@@ -34,7 +35,8 @@ const MyEquipment = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/equipment/${id}`);
+       const response = await axios.delete(`${import.meta.env.VITE_API_URL}/api/equipment/${id}`);
+        
       setEquipment(equipment.filter(item => item._id !== id));
       toast.success('Equipment deleted successfully');
       setDeleteId(null);

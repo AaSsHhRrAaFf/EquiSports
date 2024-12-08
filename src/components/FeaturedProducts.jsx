@@ -14,7 +14,7 @@ const FeaturedProducts = () => {
     const fetchFeaturedProducts = async () => {
       try {
         setLoading(true);
-        const response = await axios('http://localhost:5000/api/equipment/featured');
+         const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/equipment/featured`);
         
         setProducts(response.data);
       } catch (err) {
@@ -29,7 +29,6 @@ const FeaturedProducts = () => {
 
   if (loading) return <LoadingSpinner />;
   if (error) return <div className="text-center text-red-500">{error}</div>;
-console.log(products);
 
   return (
     <section className="py-12">

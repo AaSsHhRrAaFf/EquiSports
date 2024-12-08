@@ -16,7 +16,9 @@ const AllSportsEquipment = () => {
     const fetchEquipment = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:5000/api/equipment");
+        
+         const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/equipment`);
+        
         setEquipment(response.data);
       } catch (error) {
         toast.error("Failed to fetch equipment");

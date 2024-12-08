@@ -19,3 +19,28 @@ body.dark {
 body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+
+.carousel-item img {
+  transform: scale(1.1);
+  transition: transform 8s ease-in-out;
+}
+
+.carousel-item.active img {
+  transform: scale(1);
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-content {
+  animation: slide-up 0.5s ease-out;
+}
